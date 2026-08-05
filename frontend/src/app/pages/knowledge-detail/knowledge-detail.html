@@ -1,0 +1,30 @@
+<div *ngIf="knowledge" class="detail-card">
+
+  <div class="detail-header">
+
+    <div>
+      <h1>{{ knowledge.code }}</h1>
+      <h2>{{ knowledge.title }}</h2>
+    </div>
+
+    <span class="category">
+      {{ knowledge.category }}
+    </span>
+
+  </div>
+
+  <hr>
+
+  <h3>Solución</h3>
+
+  <p class="solution">
+    {{ knowledge.solution }}
+  </p>
+
+  <a routerLink="/knowledge">
+    <button class="back-button">
+      ← Volver
+    </button>
+  </a>
+
+</div>

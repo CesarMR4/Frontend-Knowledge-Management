@@ -1,0 +1,90 @@
+<div class="content">
+
+  <div class="header">
+
+    <h1>Contactos</h1>
+
+    <a
+      routerLink="/contacts/new"
+      class="btn-add">
+
+      ➕ Agregar Contacto
+
+    </a>
+
+  </div>
+
+  <div class="search-container">
+
+    <input
+      type="text"
+      placeholder="🔍 Buscar contacto..."
+      [(ngModel)]="searchText"
+      (input)="searchContacts()">
+
+  </div>
+
+  <div class="stats">
+
+  <div class="stat-card">
+
+    <div class="stat-icon">
+      👥
+    </div>
+
+    <div class="stat-info">
+      <p>Total de contactos</p>
+      <h2>{{ filteredContacts.length }}</h2>
+    </div>
+
+  </div>
+
+</div>
+
+  <div
+    class="contact-card"
+    *ngFor="let contact of filteredContacts">
+
+    <h2>
+      {{ contact.name }}
+    </h2>
+
+    <p class="area">
+      {{ contact.area }}
+    </p>
+
+    <p class="notes">
+      {{ contact.notes }}
+    </p>
+
+    <div class="actions">
+
+      <a
+        class="btn-view"
+        [routerLink]="['/contacts', contact.id]">
+
+        Ver
+
+      </a>
+
+      <a
+        class="btn-edit"
+        [routerLink]="['/contacts/edit', contact.id]">
+
+        Editar
+
+      </a>
+
+      <button
+        class="btn-delete"
+        (click)="deleteContact(contact.id)">
+
+        Eliminar
+
+      </button>
+
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,108 @@
+<h1>📝 Notas</h1>
+
+<button
+  class="new-note-button"
+  routerLink="/notes/new">
+
+  + Nueva Nota
+
+</button>
+<div class="search-container">
+
+  <input
+    type="text"
+    placeholder="Buscar por palabras clave..."
+    [(ngModel)]="searchText"
+    (input)="filterNotes()">
+
+</div>
+
+<div class="stats-card">
+
+  <span class="stats-label">
+
+    Total Notas
+
+  </span>
+
+  <span class="stats-value">
+
+    {{ notes.length }}
+
+  </span>
+
+</div>
+
+
+<div
+  class="note-card"
+  *ngFor="let note of paginatedNotes">
+
+<p>
+
+  {{ note.content | slice:0:180 }}
+
+  <span
+    *ngIf="note.content.length > 180">
+
+    ...
+
+  </span>
+
+</p>
+
+  <div class="actions">
+
+  <button
+    [routerLink]="[
+      '/notes',
+      note.id
+    ]">
+
+    Ver
+
+  </button>
+
+  <button
+    class="edit-button"
+    [routerLink]="[
+      '/notes/edit',
+      note.id
+    ]">
+
+    Editar
+
+  </button>
+
+</div>
+
+</div>
+<div
+  class="pagination"
+  *ngIf="totalPages > 1">
+
+  <button
+    (click)="previousPage()"
+    [disabled]="currentPage === 1">
+
+    ◀
+
+  </button>
+
+  <span>
+
+    Página {{ currentPage }}
+    de
+    {{ totalPages }}
+
+  </span>
+
+  <button
+    (click)="nextPage()"
+    [disabled]="currentPage === totalPages">
+
+    ▶
+
+  </button>
+
+</div>

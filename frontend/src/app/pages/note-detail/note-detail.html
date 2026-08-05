@@ -1,0 +1,38 @@
+<div
+  class="detail-card"
+  *ngIf="note">
+
+  <h1>
+
+    Nota
+
+  </h1>
+
+  <div class="content">
+
+    {{ note.content }}
+
+  </div>
+
+  <div class="actions">
+
+    <button
+      [routerLink]="[
+        '/notes/edit',
+        note.id
+      ]">
+
+      Editar
+
+    </button>
+
+    <button
+      routerLink="/notes">
+
+      Volver
+
+    </button>
+
+  </div>
+
+</div>

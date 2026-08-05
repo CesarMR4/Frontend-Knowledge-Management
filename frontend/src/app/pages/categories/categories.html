@@ -1,0 +1,64 @@
+<h1>🏷 Categorías</h1>
+
+<div class="stats-card">
+
+  <span class="stats-label">
+    Total Categorías
+  </span>
+
+  <span class="stats-value">
+    {{ categories.length }}
+  </span>
+
+</div>
+
+<div class="header-actions">
+
+  <button
+    class="new-category-button"
+    routerLink="/categories/new">
+
+    + Nueva Categoría
+
+  </button>
+
+</div>
+
+<div
+  class="category-card"
+  *ngFor="let category of categories">
+
+  <h2>
+    {{ category.code }}
+  </h2>
+
+  <h3>
+    {{ category.name }}
+  </h3>
+
+  <div class="actions">
+
+    <button
+      [routerLink]="[
+        '/categories/edit',
+        category.id
+      ]">
+
+      Editar
+
+    </button>
+
+    <button
+  class="delete-button"
+  (click)="deleteCategory(
+    category.id,
+    category.name
+  )">
+
+  Eliminar
+
+</button>
+
+  </div>
+
+</div>

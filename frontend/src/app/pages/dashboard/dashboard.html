@@ -1,0 +1,36 @@
+<h1>Dashboard</h1>
+<div class="stats">
+
+  <div class="card">
+    <h3>Total Soluciones</h3>
+    <p>{{ knowledgeList.length }}</p>
+  </div>
+
+  <div class="card">
+    <h3>Total Categorías</h3>
+    <p>{{ totalCategories }}</p>
+  </div>
+
+  <div class="card">
+    <h3>Último Caso</h3>
+
+    <span class="info-text">
+
+      {{ latestSolution?.title }}
+
+    </span>
+
+  </div>
+
+  <div class="card">
+    <h3>Categoría Más Usada</h3>
+
+    <span class="info-text">
+
+      {{ mostUsedCategory }}
+
+    </span>
+
+  </div>
+
+</div>

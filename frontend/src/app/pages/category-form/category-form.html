@@ -1,0 +1,43 @@
+<h1>
+  {{ isEditMode
+      ? 'Editar Categoría'
+      : 'Nueva Categoría' }}
+</h1>
+
+<div class="form-container">
+
+  <label>Código</label>
+
+  <input
+    type="text"
+    [(ngModel)]="category.code"
+    [readonly]="isEditMode">
+
+  <label>Nombre</label>
+
+  <input
+    type="text"
+    [(ngModel)]="category.name">
+
+  <div class="actions">
+
+    <button
+      (click)="saveCategory()">
+
+      {{ isEditMode
+          ? 'Actualizar'
+          : 'Guardar' }}
+
+    </button>
+
+    <button
+      type="button"
+      routerLink="/categories">
+
+      Volver
+
+    </button>
+
+  </div>
+
+</div>

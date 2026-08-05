@@ -1,0 +1,42 @@
+<h1>
+
+  {{ isEditMode
+      ? 'Editar Nota'
+      : 'Nueva Nota' }}
+
+</h1>
+
+<div class="form-container">
+
+  <label>Contenido</label>
+
+  <textarea
+    rows="12"
+    [(ngModel)]="note.content">
+
+  </textarea>
+
+  <div class="actions">
+
+    <button
+      class="save-button"
+      (click)="saveNote()">
+
+      {{ isEditMode
+          ? 'Actualizar'
+          : 'Guardar' }}
+
+    </button>
+
+    <button
+      type="button"
+      class="back-button"
+      routerLink="/notes">
+
+      Volver
+
+    </button>
+
+  </div>
+
+</div>

@@ -1,0 +1,81 @@
+<h1>🔎 Búsqueda Global</h1>
+
+<div class="search-box">
+
+  <input
+    type="text"
+    placeholder="Buscar en todo el sistema..."
+    [(ngModel)]="searchText"
+    (input)="search()">
+
+</div>
+
+<h2
+  *ngIf="filteredKnowledge.length">
+
+  📚 Knowledge Base
+
+</h2>
+
+<div
+  class="result-card"
+  *ngFor="let kb of filteredKnowledge">
+
+  <h3>
+
+    {{ kb.code }}
+
+  </h3>
+
+  <strong>
+
+    {{ kb.title }}
+
+  </strong>
+
+  <p>
+
+    {{ kb.category }}
+
+  </p>
+
+  <button
+    [routerLink]="[
+      '/knowledge',
+      kb.id
+    ]">
+
+    Ver
+
+  </button>
+
+</div>
+
+<h2
+  *ngIf="filteredNotes.length">
+
+  🧠 Notas
+
+</h2>
+
+<div
+  class="result-card"
+  *ngFor="let note of filteredNotes">
+
+  <p>
+
+    {{ note.content | slice:0:220 }}
+
+  </p>
+
+  <button
+    [routerLink]="[
+      '/notes',
+      note.id
+    ]">
+
+    Ver
+
+  </button>
+
+</div>

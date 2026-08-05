@@ -1,0 +1,70 @@
+<h1>
+  {{ isEditMode ? 'Editar Solución' : 'Nueva Solución' }}
+</h1>
+
+<p *ngIf="isEditMode">
+  <strong>ID:</strong> {{ knowledgeId }}
+</p>
+
+<div class="form-container">
+
+
+
+  <label>Título</label>
+
+  <input
+    type="text"
+    [(ngModel)]="knowledge.title"
+    (focus)="hideCodeMessage()">
+
+  <label>Categoría</label>
+<select
+  [(ngModel)]="knowledge.category"
+  name="category"
+  (change)="onCategoryChange()"
+  (focus)="hideCodeMessage()">
+
+  <option value="">
+    Seleccione una categoría
+  </option>
+
+  <option
+    *ngFor="let category of categories"
+    [value]="category.name">
+
+    {{ category.name }}
+
+  </option>
+
+</select>
+
+  <label>Solución</label>
+
+  <textarea
+    rows="8"
+    [(ngModel)]="knowledge.solution"
+    (focus)="hideCodeMessage()">
+  </textarea>
+
+  <div class="actions">
+
+    <button
+      class="save-button"
+      (click)="saveKnowledge()">
+
+      {{ isEditMode ? 'Actualizar' : 'Guardar' }}
+
+    </button>
+
+    <button
+      type="button"
+      class="back-button"
+      routerLink="/knowledge">
+
+      Volver
+
+    </button>
+
+  </div>
+
+</div>

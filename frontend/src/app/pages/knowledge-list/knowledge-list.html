@@ -1,0 +1,100 @@
+<h1>Knowledge Base</h1>
+
+<input
+  type="text"
+  placeholder="🔍 Buscar solución..."
+  class="search-box"
+  [(ngModel)]="searchText">
+
+<br><br>
+<div class="results-summary">
+
+  <div class="summary-item">
+
+    <span class="summary-label">
+      Resultados encontrados
+    </span>
+
+    <span class="summary-value">
+      {{ filteredKnowledge.length }}
+    </span>
+
+  </div>
+
+  <div class="summary-item">
+
+    <span class="summary-label">
+      Mostrando
+    </span>
+
+    <span class="summary-value">
+      {{ paginatedKnowledge.length }}
+      /
+      {{ knowledgeList.length }}
+    </span>
+
+  </div>
+
+</div>
+
+<div
+  class="kb-card"
+  *ngFor="let item of paginatedKnowledge">
+
+  <h3>{{ item.code }}</h3>
+
+  <h2>{{ item.title }}</h2>
+
+  <p>{{ item.category }}</p>
+
+  <a [routerLink]="['/knowledge', item.id]">
+    <button>
+      Ver
+    </button>
+  </a>
+
+  <a [routerLink]="['/knowledge/edit', item.id]">
+  <button>
+    Editar
+  </button>
+</a>
+<button
+  class="delete-button"
+  (click)="deleteKnowledge(
+    item.id,
+    item.title
+  )">
+
+  Eliminar
+
+</button>
+
+</div>
+
+<div class="pagination">
+
+  <button
+    (click)="previousPage()"
+    [disabled]="currentPage === 1">
+
+    ←
+
+  </button>
+
+  <span>
+
+    Página {{ currentPage }}
+    de
+    {{ totalPages }}
+
+  </span>
+
+  <button
+    (click)="nextPage()"
+    [disabled]="currentPage === totalPages">
+
+     ▶
+
+  </button>
+
+</div>
